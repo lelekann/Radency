@@ -1,14 +1,12 @@
-import {data, addText, createTag, insertChild} from "./data.js";
+import {data, addText, createTag, insertChild, clear} from './data.js';
 
 const headers = data.categoriesTable.getCategoriesHeaders();
 const categories = data.categoriesTable.getCategories();
 
 let categoriesTable = document.querySelector('#categories');
-
 const table = createTag('table');
 table.classList.add('table');
 insertChild(categoriesTable, table);
-
 const tHead = createTag('thead');
 tHead.classList.add('thead-light');
 const tBody = createTag('tbody');
@@ -41,3 +39,8 @@ const createBody = (array) => {
     }
 };
 createBody(categories);
+
+export const updateTable = () => {
+  clear(tBody);
+  createBody(data.categoriesTable.getCategories())
+};

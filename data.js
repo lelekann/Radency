@@ -132,6 +132,9 @@ export const data = {
         },
         addNote(newNote) {
             this._notes = [...this._notes, newNote]
+        },
+        toggleArchiveNote(id) {
+            this._notes = this._notes.map(note => note.id === id ? {...note, archived: !note.archived} : note);
         }
     }
 };
@@ -146,4 +149,10 @@ export const insertChild = (parent, child) => {
 
 export const addText = (elem, text) => {
     return elem.textContent = text;
+};
+
+export const clear = (parent) => {
+    while (parent.firstChild) {
+        parent.firstChild.remove();
+    }
 };

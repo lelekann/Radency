@@ -1,3 +1,6 @@
+.container {
+  padding: 15px;
+}
 
 #notes,
 #categories {
@@ -8,3 +11,8 @@
   background-color: #e7eff6;
   border-radius: 5px;
 }
+
+h1 {
+  text-align: center;
+}
+
