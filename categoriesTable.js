@@ -41,6 +41,6 @@ const createBody = (array) => {
 createBody(categories);
 
 export const updateTable = () => {
-  clear(tBody);
-  createBody(data.categoriesTable.getCategories())
+    clear(tBody);
+    createBody(data.categoriesTable.getCategories())
 };

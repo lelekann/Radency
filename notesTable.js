@@ -33,11 +33,20 @@ const createHead = () => {
 };
 createHead();
 
-const toggleArchive = (id) => {
-    data.notesTable.toggleArchiveNote(id);
+const updateAll = () => {
     clear(tBody);
     createBody(data.notesTable.getNotes());
     updateTable();
+};
+
+const toggleArchive = (id) => {
+    data.notesTable.toggleArchiveNote(id);
+    updateAll()
+};
+
+const deleteNote = (id) => {
+    data.notesTable.deleteNote(id);
+    updateAll();
 };
 
 const createBody = (array) => {
@@ -60,6 +69,7 @@ const createBody = (array) => {
                     let deleteBtn = createTag('i');
                     deleteBtn.classList.add('fas', 'fa-trash-alt');
                     insertChild(tableCol, deleteBtn);
+                    deleteBtn.addEventListener('click', () => deleteNote(actual[row].id));
                     break;
                 case 'to archive':
                     let archiveBtn = createTag('i');
@@ -67,7 +77,8 @@ const createBody = (array) => {
                     archiveBtn.addEventListener('click', () => toggleArchive(actual[row].id));
                     insertChild(tableCol, archiveBtn);
                     break;
-                default: addText(tableCol, actual[row][key])
+                default:
+                    addText(tableCol, actual[row][key])
             }
         });
     }
